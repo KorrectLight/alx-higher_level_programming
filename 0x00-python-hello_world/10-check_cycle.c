@@ -1,26 +1,31 @@
-#include "lists.h" 
-  
- /** 
-  * check_cycle - Checks if there is a loop in a linked list. 
-  * @list: A pointer to the head of the linked list. 
-  * Return: 0 if there is not a loop, 1 if there is a loop. 
-  */ 
- int check_cycle(listint_t *list) 
- { 
-         listint_t *head; 
-         listint_t *tmp; 
-  
-         head = list; 
-         tmp = list; 
-  
-         while (tmp != NULL && head->next != NULL && head->next->next != NULL) 
-         { 
-                 head = head->next->next; 
-                 tmp = tmp->next; 
-  
-                 if (head == tmp) 
-                         return (1); 
-         } 
-  
-         return (0); 
- }
+#include <stdlib.h>
+#include "lists.h"
+
+/**
+ * check_cycle - Checks if a singly-linked list contains a cycle.
+ * @list: A singly-linked list.
+ *
+ * Return: If there is no cycle - 0.
+ *         If there is a cycle - 1.
+ */
+int check_cycle(listint_t *list)
+{
+	listint_t *turtle, *hare;
+
+	if (list == NULL || list->next == NULL)
+		return (0);
+
+	turtle = list->next;
+	hare = list->next->next;
+
+	while (turtle && hare && hare->next)
+	{
+		if (turtle == hare)
+			return (1);
+
+		turtle = turtle->next;
+		hare = hare->next->next;
+	}
+
+	return (0);
+}
