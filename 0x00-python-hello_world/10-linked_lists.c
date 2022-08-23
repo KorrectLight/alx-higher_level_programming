@@ -1,6 +1,6 @@
 #include <stdio.h> 
-#include <stdlib.h> 
-#include "lists.h" 
+ #include <stdlib.h> 
+ #include "lists.h" 
   
  /** 
   * print_listint - prints all elements of a listint_t list 
@@ -24,7 +24,7 @@
          return (n); 
  } 
   
- /** 
+ /**  
   * add_nodeint - adds a new node at the beginning of a listint_t list 
   * @head: pointer to a pointer of the start of the list 
   * @n: integer to be included in node 
@@ -37,15 +37,13 @@
          new = malloc(sizeof(listint_t)); 
          if (new == NULL) 
                  return (NULL); 
-  
          new->n = n; 
          new->next = *head; 
          *head = new; 
-  
          return (new); 
  } 
   
- /** 
+ /**  
   * free_listint - frees a listint_t list 
   * @head: pointer to list to be freed 
   * Return: void 
